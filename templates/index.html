@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频关键帧提取器</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .upload-container {
+            text-align: center;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .upload-container:hover {
+            border-color: #3498db;
+        }
+        .upload-container.dragover {
+            background-color: #ecf0f1;
+            border-color: #3498db;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        .file-info {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .progress-container {
+            margin-top: 20px;
+            display: none;
+        }
+        .progress {
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #2ecc71;
+            width: 0;
+            transition: width 0.3s;
+        }
+        .settings {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .settings label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .settings input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .keyframes-container {
+            margin-top: 30px;
+        }
+        .keyframes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .keyframe {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .keyframe:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .keyframe img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .keyframe-info {
+            padding: 8px;
+            font-size: 12px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .timestamp {
+            color: #3498db;
+            font-weight: bold;
+        }
+        .video-list {
+            margin-top: 30px;
+        }
+        .video-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        .video-item:hover {
+            background-color: #f5f5f5;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border: none;
+            cursor: pointer;
+        }
+        .tab-button.active {
+            background-color: #fff;
+            border-bottom: 2px solid #3498db;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .download-all {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>视频关键帧提取器</h1>
+    
+    <div class="container">
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="upload">上传视频</button>
+                <button class="tab-button" data-tab="history">历史视频</button>
+            </div>
+            
+            <div class="tab-content active" id="upload-tab">
+                <div class="upload-container" id="drop-area">
+                    <p>拖放视频文件到这里，或</p>
+                    <input type="file" id="file-input" accept=".mp4,.avi,.mov,.mkv,.wmv,.flv" style="display: none;">
+                    <button class="btn" id="select-file-btn">选择视频文件</button>
+                    <div class="file-info" id="file-info"></div>
+                </div>
+                
+                <div class="settings">
+                    <h3>提取设置</h3>
+                    <label>
+                        捕获间隔（秒）:
+                        <input type="number" id="interval" value="1.0" min="0.1" step="0.1">
+                    </label>
+                    <label>
+                        最大截图数量:
+                        <input type="number" id="max-frames" value="50" min="1" max="200">
+                    </label>
+                </div>
+                
+                <div class="progress-container" id="progress-container">
+                    <h3>处理进度</h3>
+                    <div class="progress">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <div id="progress-text">0%</div>
+                </div>
+                
+                <div class="actions" style="margin-top: 20px; text-align: center;">
+                    <button class="btn" id="extract-btn" disabled>提取关键帧</button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="history-tab">
+                <h3>历史视频</h3>
+                <div class="video-list" id="video-list">
+                    <p>加载中...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container keyframes-container" id="keyframes-container" style="display: none;">
+        <h2>提取的关键帧</h2>
+        <div id="keyframes-message"></div>
+        <div class="keyframes-grid" id="keyframes-grid"></div>
+        <div class="download-all">
+            <button class="btn" id="download-all-btn">下载所有关键帧</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 元素引用
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('file-input');
+            const selectFileBtn = document.getElementById('select-file-btn');
+            const fileInfo = document.getElementById('file-info');
+            const extractBtn = document.getElementById('extract-btn');
+            const progressContainer = document.getElementById('progress-container');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const keyframesContainer = document.getElementById('keyframes-container');
+            const keyframesGrid = document.getElementById('keyframes-grid');
+            const keyframesMessage = document.getElementById('keyframes-message');
+            const videoList = document.getElementById('video-list');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const downloadAllBtn = document.getElementById('download-all-btn');
+            
+            // 当前上传的文件
+            let currentFile = null;
+            let currentFileName = null;
+            
+            // 标签切换
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // 更新按钮状态
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 更新内容显示
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(tabId + '-tab').classList.add('active');
+                    
+                    // 如果切换到历史标签，加载视频列表
+                    if (tabId === 'history') {
+                        loadVideoList();
+                    }
+                });
+            });
+            
+            // 文件选择按钮点击事件
+            selectFileBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // 文件选择变更事件
+            fileInput.addEventListener('change', handleFileSelect);
+            
+            // 拖放区域事件
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, () => {
+                    dropArea.classList.add('dragover');
+                }, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, () => {
+                    dropArea.classList.remove('dragover');
+                }, false);
+            });
+            
+            dropArea.addEventListener('drop', handleDrop, false);
+            
+            // 提取按钮点击事件
+            extractBtn.addEventListener('click', extractKeyframes);
+            
+            // 下载所有按钮点击事件
+            downloadAllBtn.addEventListener('click', downloadAllKeyframes);
+            
+            // 处理文件拖放
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                
+                if (files.length > 0) {
+                    handleFile(files[0]);
+                }
+            }
+            
+            // 处理文件选择
+            function handleFileSelect(e) {
+                const files = e.target.files;
+                
+                if (files.length > 0) {
+                    handleFile(files[0]);
+                }
+            }
+            
+            // 处理文件
+            function handleFile(file) {
+                // 检查文件类型
+                const validTypes = ['.mp4', '.avi', '.mov', '.mkv', '.wmv', '.flv'];
+                const fileExtension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+                
+                if (!validTypes.includes(fileExtension)) {
+                    showMessage('不支持的文件类型。请上传 MP4, AVI, MOV, MKV, WMV 或 FLV 格式的视频文件。', 'error');
+                    return;
+                }
+                
+                // 更新UI
+                currentFile = file;
+                fileInfo.innerHTML = `
+                    <strong>文件名:</strong> ${file.name}<br>
+                    <strong>大小:</strong> ${formatFileSize(file.size)}<br>
+                    <strong>类型:</strong> ${file.type}
+                `;
+                extractBtn.disabled = false;
+            }
+            
+            // 提取关键帧
+            function extractKeyframes() {
+                if (!currentFile) {
+                    showMessage('请先选择视频文件', 'error');
+                    return;
+                }
+                
+                // 获取设置
+                const interval = document.getElementById('interval').value;
+                const maxFrames = document.getElementById('max-frames').value;
+                
+                // 创建FormData对象
+                const formData = new FormData();
+                formData.append('video', currentFile);
+                
+                // 显示进度条
+                progressContainer.style.display = 'block';
+                progressBar.style.width = '0%';
+                progressText.textContent = '0%';
+                
+                // 禁用提取按钮
+                extractBtn.disabled = true;
+                
+                // 上传文件
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        currentFileName = data.filename;
+                        
+                        // 更新进度
+                        progressBar.style.width = '50%';
+                        progressText.textContent = '50% - 文件上传完成，开始提取关键帧...';
+                        
+                        // 提取关键帧
+                        return fetch('/extract', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                filename: data.filename,
+                                interval: interval,
+                                max_frames: maxFrames
+                            })
+                        });
+                    } else {
+                        throw new Error(data.error || '上传失败');
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // 更新进度
+                        progressBar.style.width = '100%';
+                        progressText.textContent = '100% - 提取完成';
+                        
+                        // 显示关键帧
+                        displayKeyframes(data.keyframes);
+                        
+                        // 显示成功消息
+                        showMessage(`成功提取 ${data.keyframes.length} 个关键帧`, 'success');
+                    } else {
+                        throw new Error(data.error || '提取失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage(`错误: ${error.message}`, 'error');
+                })
+                .finally(() => {
+                    // 启用提取按钮
+                    extractBtn.disabled = false;
+                });
+            }
+            
+            // 显示关键帧
+            function displayKeyframes(keyframes) {
+                // 显示关键帧容器
+                keyframesContainer.style.display = 'block';
+                
+                // 清空网格
+                keyframesGrid.innerHTML = '';
+                
+                if (keyframes.length === 0) {
+                    keyframesMessage.innerHTML = '<div class="message">没有找到关键帧</div>';
+                    return;
+                }
+                
+                keyframesMessage.innerHTML = '';
+                
+                // 添加每个关键帧
+                keyframes.forEach((keyframe, index) => {
+                    const keyframeElement = document.createElement('div');
+                    keyframeElement.className = 'keyframe';
+                    
+                    const img = document.createElement('img');
+                    img.src = keyframe.url || keyframe; // 兼容新旧格式
+                    img.alt = `关键帧 ${index + 1}`;
+                    img.loading = 'lazy';
+                    
+                    const info = document.createElement('div');
+                    info.className = 'keyframe-info';
+                    
+                    // 如果有时间戳信息，显示时间戳
+                    if (keyframe.timestamp_formatted) {
+                        info.innerHTML = `关键帧 ${index + 1}<br><span class="timestamp">${keyframe.timestamp_formatted}</span>`;
+                    } else {
+                        info.textContent = `关键帧 ${index + 1}`;
+                    }
+                    
+                    keyframeElement.appendChild(img);
+                    keyframeElement.appendChild(info);
+                    keyframesGrid.appendChild(keyframeElement);
+                    
+                    // 点击查看大图
+                    img.addEventListener('click', () => {
+                        window.open(keyframe.url || keyframe, '_blank');
+                    });
+                });
+            }
+            
+            // 加载视频列表
+            function loadVideoList() {
+                fetch('/list_videos')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.videos && data.videos.length > 0) {
+                            videoList.innerHTML = '';
+                            
+                            data.videos.forEach(video => {
+                                const videoItem = document.createElement('div');
+                                videoItem.className = 'video-item';
+                                videoItem.innerHTML = `
+                                    <strong>${video.filename}</strong><br>
+                                    <small>大小: ${formatFileSize(video.size)} | 上传时间: ${formatDate(video.upload_time)}</small>
+                                `;
+                                
+                                videoItem.addEventListener('click', () => {
+                                    loadKeyframes(video.filename);
+                                });
+                                
+                                videoList.appendChild(videoItem);
+                            });
+                        } else {
+                            videoList.innerHTML = '<p>没有找到上传的视频</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        videoList.innerHTML = '<p>加载视频列表失败</p>';
+                    });
+            }
+            
+            // 加载特定视频的关键帧
+            function loadKeyframes(filename) {
+                fetch(`/list_keyframes/${filename}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.keyframes) {
+                            // 切换到上传标签
+                            tabButtons[0].click();
+                            
+                            // 显示关键帧
+                            displayKeyframes(data.keyframes);
+                            
+                            // 更新当前文件名
+                            currentFileName = filename;
+                            
+                            // 显示文件信息
+                            fileInfo.innerHTML = `<strong>已加载视频:</strong> ${filename}`;
+                        } else {
+                            showMessage('没有找到关键帧', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showMessage(`加载关键帧失败: ${error.message}`, 'error');
+                    });
+            }
+            
+            // 下载所有关键帧
+            function downloadAllKeyframes() {
+                if (!currentFileName) {
+                    showMessage('没有可下载的关键帧', 'error');
+                    return;
+                }
+                
+                // 创建一个链接，指向服务器上的ZIP文件
+                const downloadUrl = `/download_keyframes/${currentFileName}`;
+                
+                // 创建一个临时链接并点击它
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                a.download = `${currentFileName}_keyframes.zip`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            
+            // 辅助函数：格式化文件大小
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+            
+            // 辅助函数：格式化日期
+            function formatDate(timestamp) {
+                const date = new Date(timestamp * 1000);
+                return date.toLocaleString();
+            }
+            
+            // 显示消息
+            function showMessage(message, type) {
+                const messageElement = document.createElement('div');
+                messageElement.className = `message ${type}`;
+                messageElement.textContent = message;
+                
+                keyframesMessage.innerHTML = '';
+                keyframesMessage.appendChild(messageElement);
+                
+                // 滚动到消息
+                keyframesMessage.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
