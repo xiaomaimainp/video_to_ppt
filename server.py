@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 视频关键帧提取器 - Web服务器
-在端口9800运行，提供视频上传和关键帧提取功能
+在端口9800运行，提供视频上传、关键帧提取和语音识别功能
 """
 
 import os
@@ -10,6 +10,7 @@ import json
 from flask import Flask, request, render_template, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 from extractor import VideoKeyframeExtractor
+from asr_processor import ASRProcessor
 
 # 创建Flask应用
 app = Flask(__name__)
@@ -26,6 +27,15 @@ os.makedirs(KEYFRAMES_FOLDER, exist_ok=True)
 
 # 创建提取器实例
 extractor = VideoKeyframeExtractor(debug_enabled=False)
+
+# 创建ASR处理器实例（延迟加载，首次使用时才会加载模型）
+asr_processor = None
+def get_asr_processor():
+    global asr_processor
+    if asr_processor is None:
+        # 使用已经成功下载的base模型
+        asr_processor = ASRProcessor(model_name="base")
+    return asr_processor
 
 # 检查文件扩展名是否允许
 def allowed_file(filename):
@@ -230,6 +240,62 @@ def delete_keyframes():
         
     except Exception as e:
         return jsonify({'error': f'删除失败: {str(e)}'}), 500
+
+@app.route('/process_asr', methods=['POST'])
+def process_asr():
+    """处理视频ASR（自动语音识别）"""
+    data = request.json
+    
+    if not data or 'filename' not in data:
+        return jsonify({'error': '缺少文件名'}), 400
+    
+    filename = data['filename']
+    video_path = os.path.join(UPLOAD_FOLDER, filename)
+    
+    if not os.path.exists(video_path):
+        return jsonify({'error': '文件不存在'}), 404
+    
+    # 设置语言（默认为中文）
+    language = data.get('language', 'zh')
+    
+    # 设置输出目录
+    base_name = os.path.splitext(filename)[0]
+    output_dir = os.path.join(KEYFRAMES_FOLDER, base_name)
+    os.makedirs(output_dir, exist_ok=True)
+    
+    try:
+        # 获取ASR处理器实例
+        processor = get_asr_processor()
+        
+        # 处理视频
+        result = processor.process_video(
+            video_path=video_path,
+            language=language,
+            output_dir=output_dir
+        )
+        
+        # 构建ASR结果的URL
+        asr_filename = f"{base_name}_asr.json"
+        asr_path = os.path.join(output_dir, asr_filename)
+        asr_url = f"/keyframes/{base_name}/{asr_filename}"
+        
+        return jsonify({
+            'success': True,
+            'message': '语音识别完成',
+            'asr_url': asr_url,
+            'sentences_count': len(result.get('result', {}).get('sentences', [])),
+            'duration': result.get('result', {}).get('segments', [{}])[-1].get('end', 0) if result.get('result', {}).get('segments') else 0
+        })
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'语音识别失败: {str(e)}'}), 500
+
+@app.route('/keyframes/<path:filename>')
+def serve_keyframes(filename):
+    """提供关键帧文件访问"""
+    return send_from_directory(KEYFRAMES_FOLDER, filename)
 
 @app.route('/clear_all', methods=['POST'])
 def clear_all():
