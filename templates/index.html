@@ -109,10 +109,35 @@
             border-radius: 4px;
             overflow: hidden;
             transition: transform 0.2s;
+            position: relative;
         }
         .keyframe:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .keyframe-checkbox {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            z-index: 10;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        .keyframe.selected {
+            border: 3px solid #3498db;
+        }
+        .batch-actions {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .selection-info {
+            font-size: 14px;
+            font-weight: bold;
         }
         .keyframe img {
             width: 100%;
@@ -135,10 +160,28 @@
         .video-item {
             padding: 10px;
             border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .video-item-info {
+            flex-grow: 1;
             cursor: pointer;
         }
         .video-item:hover {
             background-color: #f5f5f5;
+        }
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .delete-btn:hover {
+            background-color: #c0392b;
         }
         .hidden {
             display: none;
@@ -180,6 +223,10 @@
             background-color: #f8d7da;
             color: #721c24;
         }
+        .message.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
         .download-all {
             margin-top: 20px;
             text-align: center;
@@ -187,7 +234,17 @@
     </style>
 </head>
 <body>
-    <h1>视频关键帧提取器</h1>
+    <h1>视频转幻灯片</h1>
+    
+    <div class="container" style="text-align: center; margin-bottom: 20px;">
+        <div class="global-actions">
+            <button class="btn" id="export-global-btn" title="导出所有数据">导出数据</button>
+            <button class="btn" id="clear-global-btn" style="background-color: #e74c3c; margin-left: 10px;" title="清空所有数据">清空数据</button>
+            <button class="btn" id="import-global-btn" style="background-color: #27ae60; margin-left: 10px;" title="导入数据">导入数据</button>
+            <span id="import-global-file-name" style="margin-left: 10px; font-size: 14px;"></span>
+            <input type="file" id="import-global-file-input" accept=".zip" style="display: none;">
+        </div>
+    </div>
     
     <div class="container">
         <div class="tab-container">
@@ -213,6 +270,10 @@
                     <label>
                         最大截图数量:
                         <input type="number" id="max-frames" value="50" min="1" max="200">
+                    </label>
+                    <label>
+                        强制提取间隔（秒）:
+                        <input type="number" id="force-interval" value="60.0" min="1.0" step="1.0" title="即使没有足够的差异，也会在这个时间间隔内强制提取关键帧">
                     </label>
                 </div>
                 
@@ -241,9 +302,25 @@
     <div class="container keyframes-container" id="keyframes-container" style="display: none;">
         <h2>提取的关键帧</h2>
         <div id="keyframes-message"></div>
+        
+        <div class="batch-actions">
+            <div class="selection-controls">
+                <button class="btn" id="select-all-btn">全选</button>
+                <button class="btn" id="deselect-all-btn" style="margin-left: 10px;">取消全选</button>
+                <button class="btn" id="invert-selection-btn" style="margin-left: 10px;">反选</button>
+            </div>
+            <div class="selection-info" id="selection-info">已选择 0 个关键帧</div>
+            <div class="selection-actions">
+                <button class="btn" id="download-selected-btn" disabled>下载选中项</button>
+                <button class="btn" id="delete-selected-btn" style="background-color: #e74c3c; margin-left: 10px;" disabled>删除选中项</button>
+            </div>
+        </div>
+        
         <div class="keyframes-grid" id="keyframes-grid"></div>
+        
         <div class="download-all">
             <button class="btn" id="download-all-btn">下载所有关键帧</button>
+            <button class="btn" id="delete-current-btn" style="background-color: #e74c3c; margin-left: 10px;">删除当前视频</button>
         </div>
     </div>
     
@@ -265,6 +342,25 @@
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.tab-content');
             const downloadAllBtn = document.getElementById('download-all-btn');
+            const deleteCurrentBtn = document.getElementById('delete-current-btn');
+            
+            // 批量操作按钮
+            const selectAllBtn = document.getElementById('select-all-btn');
+            const deselectAllBtn = document.getElementById('deselect-all-btn');
+            const invertSelectionBtn = document.getElementById('invert-selection-btn');
+            const downloadSelectedBtn = document.getElementById('download-selected-btn');
+            const deleteSelectedBtn = document.getElementById('delete-selected-btn');
+            const selectionInfo = document.getElementById('selection-info');
+            
+            // 全局操作按钮
+            const exportGlobalBtn = document.getElementById('export-global-btn');
+            const clearGlobalBtn = document.getElementById('clear-global-btn');
+            const importGlobalBtn = document.getElementById('import-global-btn');
+            const importGlobalFileInput = document.getElementById('import-global-file-input');
+            const importGlobalFileName = document.getElementById('import-global-file-name');
+            
+            // 选中的关键帧
+            let selectedKeyframes = [];
             
             // 当前上传的文件
             let currentFile = null;
@@ -328,6 +424,145 @@
             // 下载所有按钮点击事件
             downloadAllBtn.addEventListener('click', downloadAllKeyframes);
             
+            // 删除当前视频按钮点击事件
+            deleteCurrentBtn.addEventListener('click', () => {
+                if (currentFileName) {
+                    deleteFile(currentFileName);
+                } else {
+                    showMessage('没有选择视频', 'error');
+                }
+            });
+            
+            // 全选按钮点击事件
+            selectAllBtn.addEventListener('click', () => {
+                const checkboxes = document.querySelectorAll('.keyframe-checkbox');
+                checkboxes.forEach(checkbox => {
+                    if (!checkbox.checked) {
+                        checkbox.checked = true;
+                        
+                        // 手动触发change事件
+                        const event = new Event('change');
+                        checkbox.dispatchEvent(event);
+                    }
+                });
+            });
+            
+            // 取消全选按钮点击事件
+            deselectAllBtn.addEventListener('click', () => {
+                const checkboxes = document.querySelectorAll('.keyframe-checkbox');
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        checkbox.checked = false;
+                        
+                        // 手动触发change事件
+                        const event = new Event('change');
+                        checkbox.dispatchEvent(event);
+                    }
+                });
+            });
+            
+            // 反选按钮点击事件
+            invertSelectionBtn.addEventListener('click', () => {
+                const checkboxes = document.querySelectorAll('.keyframe-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = !checkbox.checked;
+                    
+                    // 手动触发change事件
+                    const event = new Event('change');
+                    checkbox.dispatchEvent(event);
+                });
+            });
+            
+            // 下载选中项按钮点击事件
+            downloadSelectedBtn.addEventListener('click', () => {
+                if (selectedKeyframes.length === 0) {
+                    showMessage('请先选择要下载的关键帧', 'error');
+                    return;
+                }
+                
+                // 创建一个隐藏的iframe用于下载
+                const downloadFrame = document.createElement('iframe');
+                downloadFrame.style.display = 'none';
+                document.body.appendChild(downloadFrame);
+                
+                // 依次下载选中的关键帧
+                selectedKeyframes.forEach(keyframe => {
+                    setTimeout(() => {
+                        downloadFrame.src = keyframe.url;
+                    }, 100);
+                });
+                
+                // 显示成功消息
+                showMessage(`正在下载 ${selectedKeyframes.length} 个关键帧`, 'success');
+                
+                // 一段时间后移除iframe
+                setTimeout(() => {
+                    document.body.removeChild(downloadFrame);
+                }, selectedKeyframes.length * 200);
+            });
+            
+            // 删除选中项按钮点击事件
+            deleteSelectedBtn.addEventListener('click', () => {
+                if (selectedKeyframes.length === 0) {
+                    showMessage('请先选择要删除的关键帧', 'error');
+                    return;
+                }
+                
+                if (!confirm(`确定要删除选中的 ${selectedKeyframes.length} 个关键帧吗？此操作不可恢复。`)) {
+                    return;
+                }
+                
+                // 获取选中关键帧的URL列表
+                const urlsToDelete = selectedKeyframes.map(keyframe => keyframe.url);
+                
+                // 发送删除请求
+                fetch('/delete_keyframes', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        filename: currentFileName,
+                        urls: urlsToDelete
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showMessage(data.message, 'success');
+                        
+                        // 重新加载关键帧
+                        loadKeyframes(currentFileName);
+                    } else {
+                        throw new Error(data.error || '删除失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage(`删除失败: ${error.message}`, 'error');
+                });
+            });
+            
+            // 全局导出按钮点击事件
+            exportGlobalBtn.addEventListener('click', exportAllData);
+            
+            // 全局清空按钮点击事件
+            clearGlobalBtn.addEventListener('click', clearAllData);
+            
+            // 全局导入按钮点击事件
+            importGlobalBtn.addEventListener('click', () => {
+                importGlobalFileInput.click();
+            });
+            
+            // 全局导入文件选择事件
+            importGlobalFileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    importGlobalFileName.textContent = file.name;
+                    importData(file);
+                }
+            });
+            
             // 处理文件拖放
             function handleDrop(e) {
                 const dt = e.dataTransfer;
@@ -378,6 +613,7 @@
                 // 获取设置
                 const interval = document.getElementById('interval').value;
                 const maxFrames = document.getElementById('max-frames').value;
+                const forceInterval = document.getElementById('force-interval').value;
                 
                 // 创建FormData对象
                 const formData = new FormData();
@@ -414,7 +650,8 @@
                             body: JSON.stringify({
                                 filename: data.filename,
                                 interval: interval,
-                                max_frames: maxFrames
+                                max_frames: maxFrames,
+                                force_interval: forceInterval
                             })
                         });
                     } else {
@@ -452,8 +689,10 @@
                 // 显示关键帧容器
                 keyframesContainer.style.display = 'block';
                 
-                // 清空网格
+                // 清空网格和选中状态
                 keyframesGrid.innerHTML = '';
+                selectedKeyframes = [];
+                updateSelectionInfo();
                 
                 if (keyframes.length === 0) {
                     keyframesMessage.innerHTML = '<div class="message">没有找到关键帧</div>';
@@ -466,6 +705,33 @@
                 keyframes.forEach((keyframe, index) => {
                     const keyframeElement = document.createElement('div');
                     keyframeElement.className = 'keyframe';
+                    keyframeElement.dataset.index = index;
+                    keyframeElement.dataset.url = keyframe.url || keyframe; // 兼容新旧格式
+                    
+                    // 添加复选框
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'keyframe-checkbox';
+                    checkbox.dataset.index = index;
+                    
+                    // 复选框点击事件
+                    checkbox.addEventListener('change', (e) => {
+                        e.stopPropagation();
+                        const idx = parseInt(e.target.dataset.index);
+                        const url = keyframeElement.dataset.url;
+                        
+                        if (e.target.checked) {
+                            keyframeElement.classList.add('selected');
+                            if (!selectedKeyframes.some(k => k.index === idx)) {
+                                selectedKeyframes.push({ index: idx, url: url });
+                            }
+                        } else {
+                            keyframeElement.classList.remove('selected');
+                            selectedKeyframes = selectedKeyframes.filter(k => k.index !== idx);
+                        }
+                        
+                        updateSelectionInfo();
+                    });
                     
                     const img = document.createElement('img');
                     img.src = keyframe.url || keyframe; // 兼容新旧格式
@@ -482,15 +748,37 @@
                         info.textContent = `关键帧 ${index + 1}`;
                     }
                     
+                    keyframeElement.appendChild(checkbox);
                     keyframeElement.appendChild(img);
                     keyframeElement.appendChild(info);
                     keyframesGrid.appendChild(keyframeElement);
                     
-                    // 点击查看大图
-                    img.addEventListener('click', () => {
+                    // 点击图片查看大图
+                    img.addEventListener('click', (e) => {
+                        e.stopPropagation();
                         window.open(keyframe.url || keyframe, '_blank');
                     });
+                    
+                    // 点击关键帧元素切换选中状态
+                    keyframeElement.addEventListener('click', (e) => {
+                        if (e.target !== img && e.target !== checkbox) {
+                            checkbox.checked = !checkbox.checked;
+                            
+                            // 手动触发change事件
+                            const event = new Event('change');
+                            checkbox.dispatchEvent(event);
+                        }
+                    });
                 });
+            }
+            
+            // 更新选择信息
+            function updateSelectionInfo() {
+                selectionInfo.textContent = `已选择 ${selectedKeyframes.length} 个关键帧`;
+                
+                // 更新按钮状态
+                downloadSelectedBtn.disabled = selectedKeyframes.length === 0;
+                deleteSelectedBtn.disabled = selectedKeyframes.length === 0;
             }
             
             // 加载视频列表
@@ -504,15 +792,32 @@
                             data.videos.forEach(video => {
                                 const videoItem = document.createElement('div');
                                 videoItem.className = 'video-item';
-                                videoItem.innerHTML = `
+                                
+                                // 创建视频信息区域
+                                const videoInfo = document.createElement('div');
+                                videoInfo.className = 'video-item-info';
+                                videoInfo.innerHTML = `
                                     <strong>${video.filename}</strong><br>
                                     <small>大小: ${formatFileSize(video.size)} | 上传时间: ${formatDate(video.upload_time)}</small>
                                 `;
                                 
-                                videoItem.addEventListener('click', () => {
+                                // 点击视频信息加载关键帧
+                                videoInfo.addEventListener('click', () => {
                                     loadKeyframes(video.filename);
                                 });
                                 
+                                // 创建删除按钮
+                                const deleteBtn = document.createElement('button');
+                                deleteBtn.className = 'delete-btn';
+                                deleteBtn.textContent = '删除';
+                                deleteBtn.addEventListener('click', (e) => {
+                                    e.stopPropagation(); // 阻止事件冒泡
+                                    deleteFile(video.filename);
+                                });
+                                
+                                // 添加到视频项
+                                videoItem.appendChild(videoInfo);
+                                videoItem.appendChild(deleteBtn);
                                 videoList.appendChild(videoItem);
                             });
                         } else {
@@ -523,6 +828,45 @@
                         console.error('Error:', error);
                         videoList.innerHTML = '<p>加载视频列表失败</p>';
                     });
+            }
+            
+            // 删除文件
+            function deleteFile(filename) {
+                if (!confirm(`确定要删除文件 ${filename} 及其关键帧吗？此操作不可恢复。`)) {
+                    return;
+                }
+                
+                fetch('/delete_file', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        filename: filename
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showMessage(data.message, 'success');
+                        
+                        // 如果删除的是当前显示的文件，清空关键帧显示
+                        if (currentFileName === filename) {
+                            keyframesContainer.style.display = 'none';
+                            currentFileName = null;
+                            fileInfo.innerHTML = '';
+                        }
+                        
+                        // 重新加载视频列表
+                        loadVideoList();
+                    } else {
+                        throw new Error(data.error || '删除失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage(`删除失败: ${error.message}`, 'error');
+                });
             }
             
             // 加载特定视频的关键帧
@@ -588,6 +932,90 @@
                 return date.toLocaleString();
             }
             
+            // 导出所有数据
+            function exportAllData() {
+                // 创建一个链接，指向服务器上的导出接口
+                const exportUrl = '/export_data';
+                
+                // 创建一个临时链接并点击它
+                const a = document.createElement('a');
+                a.href = exportUrl;
+                a.download = 'video_to_ppt_data.zip';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            
+            // 清空所有数据
+            function clearAllData() {
+                if (!confirm('确定要清空所有视频和关键帧数据吗？此操作不可恢复。')) {
+                    return;
+                }
+                
+                fetch('/clear_all', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showMessage(data.message, 'success');
+                        
+                        // 清空当前显示
+                        keyframesContainer.style.display = 'none';
+                        currentFileName = null;
+                        fileInfo.innerHTML = '';
+                        
+                        // 重新加载视频列表
+                        loadVideoList();
+                    } else {
+                        throw new Error(data.error || '清空失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage(`清空失败: ${error.message}`, 'error');
+                });
+            }
+            
+            // 导入数据
+            function importData(file) {
+                // 创建FormData对象
+                const formData = new FormData();
+                formData.append('zip_file', file);
+                
+                // 显示进度消息
+                showMessage('正在导入数据，请稍候...', 'info');
+                
+                fetch('/import_data', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showMessage(data.message, 'success');
+                        
+                        // 重新加载视频列表
+                        loadVideoList();
+                    } else {
+                        throw new Error(data.error || '导入失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage(`导入失败: ${error.message}`, 'error');
+                })
+                .finally(() => {
+                    // 清空文件输入
+                    importFileInput.value = '';
+                    importFileName.textContent = '';
+                });
+            }
+            
             // 显示消息
             function showMessage(message, type) {
                 const messageElement = document.createElement('div');
@@ -596,6 +1024,9 @@
                 
                 keyframesMessage.innerHTML = '';
                 keyframesMessage.appendChild(messageElement);
+                
+                // 显示关键帧容器（如果隐藏的话）
+                keyframesContainer.style.display = 'block';
                 
                 // 滚动到消息
                 keyframesMessage.scrollIntoView({ behavior: 'smooth' });

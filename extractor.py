@@ -181,7 +181,8 @@ class VideoKeyframeExtractor:
         output_dir: str = "keyframes",
         capture_interval: float = 1.0,
         max_screenshots: int = 50,
-        progress_callback: Optional[Callable[[float], None]] = None
+        progress_callback: Optional[Callable[[float], None]] = None,
+        force_interval: float = 60.0  # 强制每60秒提取一帧，即使没有足够的差异
     ) -> List[Dict[str, Any]]:
         """
         从视频中提取关键帧
@@ -192,6 +193,7 @@ class VideoKeyframeExtractor:
             capture_interval: 捕获间隔（秒）
             max_screenshots: 最大截图数量
             progress_callback: 进度回调函数
+            force_interval: 强制提取间隔（秒），即使没有足够的差异也会提取
             
         Returns:
             List[Dict[str, Any]]: 关键帧信息列表，包含路径、时间戳等信息
@@ -233,6 +235,7 @@ class VideoKeyframeExtractor:
         prev_frame = None
         frame_position = 0
         screenshot_count = 0
+        last_forced_timestamp = -force_interval  # 上次强制提取的时间戳
         
         # 计算总处理帧数
         total_frames_to_process = min(frame_count, int(frame_count / frame_interval) * frame_interval)
@@ -261,6 +264,9 @@ class VideoKeyframeExtractor:
                 progress_callback(progress)
                 self.last_progress_update = current_time
             
+            # 检查是否需要强制提取（第一帧或者距离上次提取的时间超过强制间隔）
+            force_extract = prev_frame is None or (timestamp - last_forced_timestamp >= force_interval)
+            
             # 第一帧总是保存
             if prev_frame is None:
                 # 生成文件名，包含时间戳
@@ -281,13 +287,14 @@ class VideoKeyframeExtractor:
                 keyframes_info.append(keyframe_info)
                 
                 screenshot_count += 1
+                last_forced_timestamp = timestamp
                 self.debug(f"保存第一帧: {output_path} (时间: {timestamp_formatted})")
             else:
                 # 计算与前一帧的差异
                 diff = self.calculate_frame_difference(prev_frame, frame)
                 
-                # 如果差异超过阈值，保存为关键帧
-                if diff > threshold:
+                # 如果差异超过阈值或需要强制提取，保存为关键帧
+                if diff > threshold or force_extract:
                     # 生成文件名，包含时间戳
                     filename = f"keyframe_{timestamp_formatted}_{screenshot_count:04d}.jpg"
                     output_path = os.path.join(output_dir, filename)
@@ -306,7 +313,13 @@ class VideoKeyframeExtractor:
                     keyframes_info.append(keyframe_info)
                     
                     screenshot_count += 1
-                    self.debug(f"保存关键帧: {output_path}, 时间: {timestamp_formatted}, 差异: {diff:.4f}")
+                    
+                    # 如果是强制提取，更新上次强制提取的时间戳
+                    if force_extract:
+                        last_forced_timestamp = timestamp
+                        self.debug(f"强制保存关键帧: {output_path}, 时间: {timestamp_formatted}, 差异: {diff:.4f}")
+                    else:
+                        self.debug(f"保存关键帧: {output_path}, 时间: {timestamp_formatted}, 差异: {diff:.4f}")
             
             # 更新前一帧
             prev_frame = frame.copy()

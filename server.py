@@ -84,8 +84,8 @@ def extract_keyframes():
     
     # 提取参数
     capture_interval = float(data.get('interval', 1.0))
-    max_screenshots = int(data.get('max_frames', 50))
-    
+    max_screenshots = int(data.get('max_frames', 5000))
+    force_interval = float(data.get('force_interval', 25.0))  
     # 创建输出目录
     output_dir = os.path.join(KEYFRAMES_FOLDER, os.path.splitext(filename)[0])
     os.makedirs(output_dir, exist_ok=True)
@@ -100,7 +100,8 @@ def extract_keyframes():
             video_path=video_path,
             output_dir=output_dir,
             capture_interval=capture_interval,
-            max_screenshots=max_screenshots
+            max_screenshots=max_screenshots,
+            force_interval=force_interval
         )
         
         # 准备返回数据
@@ -148,6 +149,211 @@ def list_videos():
             })
     
     return jsonify({'videos': videos})
+
+@app.route('/delete_file', methods=['POST'])
+def delete_file():
+    """删除文件及其关键帧"""
+    data = request.json
+    
+    if not data or 'filename' not in data:
+        return jsonify({'error': '缺少文件名'}), 400
+    
+    filename = data['filename']
+    video_path = os.path.join(UPLOAD_FOLDER, filename)
+    
+    # 检查文件是否存在
+    if not os.path.exists(video_path):
+        return jsonify({'error': '文件不存在'}), 404
+    
+    try:
+        # 删除视频文件
+        os.remove(video_path)
+        
+        # 删除关键帧目录
+        base_name = os.path.splitext(filename)[0]
+        keyframes_dir = os.path.join(KEYFRAMES_FOLDER, base_name)
+        
+        if os.path.exists(keyframes_dir):
+            # 删除目录中的所有文件
+            for file in os.listdir(keyframes_dir):
+                file_path = os.path.join(keyframes_dir, file)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+            
+            # 删除目录
+            os.rmdir(keyframes_dir)
+        
+        return jsonify({
+            'success': True,
+            'message': f'成功删除文件 {filename} 及其关键帧'
+        })
+        
+    except Exception as e:
+        return jsonify({'error': f'删除失败: {str(e)}'}), 500
+
+@app.route('/delete_keyframes', methods=['POST'])
+def delete_keyframes():
+    """删除选中的关键帧"""
+    data = request.json
+    
+    if not data or 'filename' not in data or 'urls' not in data:
+        return jsonify({'error': '缺少必要参数'}), 400
+    
+    filename = data['filename']
+    urls = data['urls']
+    
+    if not urls or not isinstance(urls, list):
+        return jsonify({'error': '无效的URL列表'}), 400
+    
+    base_name = os.path.splitext(filename)[0]
+    keyframes_dir = os.path.join(KEYFRAMES_FOLDER, base_name)
+    
+    if not os.path.exists(keyframes_dir):
+        return jsonify({'error': '关键帧目录不存在'}), 404
+    
+    try:
+        deleted_count = 0
+        
+        for url in urls:
+            # 从URL中提取文件名
+            keyframe_filename = url.split('/')[-1]
+            keyframe_path = os.path.join(keyframes_dir, keyframe_filename)
+            
+            if os.path.exists(keyframe_path):
+                os.remove(keyframe_path)
+                deleted_count += 1
+        
+        return jsonify({
+            'success': True,
+            'message': f'成功删除 {deleted_count} 个关键帧'
+        })
+        
+    except Exception as e:
+        return jsonify({'error': f'删除失败: {str(e)}'}), 500
+
+@app.route('/clear_all', methods=['POST'])
+def clear_all():
+    """清空所有上传的视频和关键帧"""
+    try:
+        # 删除上传文件夹中的所有文件
+        for filename in os.listdir(UPLOAD_FOLDER):
+            file_path = os.path.join(UPLOAD_FOLDER, filename)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+        
+        # 删除关键帧文件夹中的所有内容
+        for dirname in os.listdir(KEYFRAMES_FOLDER):
+            dir_path = os.path.join(KEYFRAMES_FOLDER, dirname)
+            if os.path.isdir(dir_path):
+                # 删除目录中的所有文件
+                for file in os.listdir(dir_path):
+                    file_path = os.path.join(dir_path, file)
+                    if os.path.isfile(file_path):
+                        os.remove(file_path)
+                # 删除目录
+                os.rmdir(dir_path)
+        
+        return jsonify({
+            'success': True,
+            'message': '成功清空所有视频和关键帧'
+        })
+        
+    except Exception as e:
+        return jsonify({'error': f'清空失败: {str(e)}'}), 500
+
+@app.route('/export_data', methods=['GET'])
+def export_data():
+    """导出所有数据为ZIP文件"""
+    import zipfile
+    import tempfile
+    import shutil
+    
+    try:
+        # 创建临时目录
+        with tempfile.TemporaryDirectory() as temp_dir:
+            zip_path = os.path.join(temp_dir, 'video_to_ppt_data.zip')
+            
+            # 创建ZIP文件
+            with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                # 添加上传的视频
+                for filename in os.listdir(UPLOAD_FOLDER):
+                    file_path = os.path.join(UPLOAD_FOLDER, filename)
+                    if os.path.isfile(file_path):
+                        zipf.write(file_path, os.path.join('uploads', filename))
+                
+                # 添加关键帧
+                for dirname in os.listdir(KEYFRAMES_FOLDER):
+                    dir_path = os.path.join(KEYFRAMES_FOLDER, dirname)
+                    if os.path.isdir(dir_path):
+                        for file in os.listdir(dir_path):
+                            file_path = os.path.join(dir_path, file)
+                            if os.path.isfile(file_path):
+                                zipf.write(file_path, os.path.join('keyframes', dirname, file))
+            
+            # 发送ZIP文件
+            return send_from_directory(temp_dir, 'video_to_ppt_data.zip', as_attachment=True)
+            
+    except Exception as e:
+        return jsonify({'error': f'导出失败: {str(e)}'}), 500
+
+@app.route('/import_data', methods=['POST'])
+def import_data():
+    """导入ZIP文件中的数据"""
+    import zipfile
+    import tempfile
+    
+    if 'zip_file' not in request.files:
+        return jsonify({'error': '没有上传文件'}), 400
+    
+    file = request.files['zip_file']
+    
+    if file.filename == '':
+        return jsonify({'error': '没有选择文件'}), 400
+    
+    if not file.filename.endswith('.zip'):
+        return jsonify({'error': '请上传ZIP文件'}), 400
+    
+    try:
+        # 创建临时目录
+        with tempfile.TemporaryDirectory() as temp_dir:
+            zip_path = os.path.join(temp_dir, 'uploaded.zip')
+            file.save(zip_path)
+            
+            # 解压ZIP文件
+            with zipfile.ZipFile(zip_path, 'r') as zipf:
+                # 提取所有文件
+                zipf.extractall(temp_dir)
+                
+                # 复制上传的视频
+                uploads_dir = os.path.join(temp_dir, 'uploads')
+                if os.path.exists(uploads_dir):
+                    for filename in os.listdir(uploads_dir):
+                        src_path = os.path.join(uploads_dir, filename)
+                        dst_path = os.path.join(UPLOAD_FOLDER, filename)
+                        if os.path.isfile(src_path):
+                            shutil.copy2(src_path, dst_path)
+                
+                # 复制关键帧
+                keyframes_dir = os.path.join(temp_dir, 'keyframes')
+                if os.path.exists(keyframes_dir):
+                    for dirname in os.listdir(keyframes_dir):
+                        src_dir = os.path.join(keyframes_dir, dirname)
+                        dst_dir = os.path.join(KEYFRAMES_FOLDER, dirname)
+                        if os.path.isdir(src_dir):
+                            os.makedirs(dst_dir, exist_ok=True)
+                            for filename in os.listdir(src_dir):
+                                src_path = os.path.join(src_dir, filename)
+                                dst_path = os.path.join(dst_dir, filename)
+                                if os.path.isfile(src_path):
+                                    shutil.copy2(src_path, dst_path)
+        
+        return jsonify({
+            'success': True,
+            'message': '成功导入数据'
+        })
+        
+    except Exception as e:
+        return jsonify({'error': f'导入失败: {str(e)}'}), 500
 
 @app.route('/list_keyframes/<filename>')
 def list_keyframes(filename):
