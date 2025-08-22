@@ -107,3 +107,8 @@ python server.py
 - 默认端口：9800（可在server.py中修改）
 - 上传文件大小限制：500MB（可在server.py中修改）
 - 支持的视频格式：MP4, AVI, MOV, MKV, WMV, FLV
+
+
+## 贡献指南 
+
+欢迎提交PR！
