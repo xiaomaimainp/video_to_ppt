@@ -172,3 +172,15 @@
 2025-08-25 13:48:07,077 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
 2025-08-25 13:48:07,079 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
 2025-08-25 13:48:07,080 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:48:55,223 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:48:55,224 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:48:55,224 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:49:00,800 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:49:00,802 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:49:00,802 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:49:49,835 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:49:49,836 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:49:49,836 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:49:55,619 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:49:55,621 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:49:55,621 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
