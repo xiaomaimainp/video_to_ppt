@@ -2739,7 +2739,7 @@
                     1020
                 ],
                 "score": 0.59,
-                "latex": "7(4^{(4)},b^{(4)})=\\frac{1}{2}\\sum\\limits_{i=1}^{n}((4^{(4)},b^{(4)})+\\frac{1}{2m}\\sum\\limits_{k=1}^{2}114)^{n+1}"
+                "latex": "3(40^{(\\omega)},b^{\\omega})=\\frac{1}{m}\\sum\\limits_{i=1}^{m}(\\cos^{i},y^{\\omega})+\\frac{\\lambda}{2m}\\sum\\limits_{k=1}^{2}114^{\\tan^{(\\omega)}}"
             },
             {
                 "category_id": 15,
