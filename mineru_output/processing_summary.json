@@ -1,19 +1,39 @@
 {
   "total_videos": 1,
   "processed_videos": 1,
-  "successful_videos": 0,
-  "failed_videos": 1,
-  "processing_time": "2025-08-25T13:38:47.021991",
+  "successful_videos": 1,
+  "failed_videos": 0,
+  "processing_time": "2025-08-25T17:05:25.508192",
   "results": [
     {
-      "video_name": "1.5__35858e88-211d-4a44-aa48-5ea04074b466",
-      "pdf_path": "mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf",
-      "error": "'MinerUKeyframeProcessor' object has no attribute 'run_mineru_processing'",
-      "status": "error",
-      "processing_time": "2025-08-25T13:38:47.021414",
+      "video_name": "4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f",
+      "pdf_path": "mineru_output/pdfs/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f.pdf",
+      "status": "success",
+      "key_content": {
+        "session_id": "4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f",
+        "status": "success",
+        "content_file": "mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f.md",
+        "images_dir": "mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/images",
+        "structured_json_file": "mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_structured.json",
+        "line_count": 639,
+        "image_count": 49,
+        "processed_at": "2025-08-25T17:05:25.472537"
+      },
+      "processing_time": "2025-08-25T17:05:25.507488",
       "key_information": {
-        "error": "处理失败",
-        "details": "'MinerUKeyframeProcessor' object has no attribute 'run_mineru_processing'"
+        "video_name": "4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f",
+        "text_blocks": [],
+        "markdown_content": "",
+        "statistics": {
+          "total_text_blocks": 0,
+          "markdown_length": 0,
+          "has_images": false,
+          "has_tables": false,
+          "has_formulas": false,
+          "image_count": 0
+        },
+        "generated_files": {},
+        "extraction_time": "2025-08-25T17:05:25.507513"
       },
       "pdf_created": true
     }

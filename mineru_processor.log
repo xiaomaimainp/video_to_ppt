@@ -202,3 +202,93 @@
 2025-08-25 13:52:38,268 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
 2025-08-25 13:52:38,270 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
 2025-08-25 13:52:38,271 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:53:26,751 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:53:26,752 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:53:26,752 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:53:32,033 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:53:32,035 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:53:32,035 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:54:51,187 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 13:54:51,187 - INFO - 关键帧目录: keyframes
+2025-08-25 13:54:51,187 - INFO - 输出目录: mineru_output
+2025-08-25 13:54:51,187 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 13:54:51,188 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:54:51,188 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:54:51,188 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:55:18,636 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 13:55:18,636 - INFO - 关键帧目录: keyframes
+2025-08-25 13:55:18,636 - INFO - 输出目录: mineru_output
+2025-08-25 13:55:18,637 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 13:55:18,637 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:55:18,637 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:55:18,637 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:55:24,017 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:55:24,018 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:55:24,018 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:56:11,533 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:56:11,535 - INFO - 内容提取完成: 243行文档, 48张图片
+2025-08-25 13:56:11,535 - ERROR - MinerU处理PDF时出错: 'MinerUKeyframeProcessor' object has no attribute 'cleanup_temp_files'
+2025-08-25 13:56:11,536 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 13:56:11,536 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 14:05:43,595 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 14:05:43,596 - INFO - 关键帧目录: keyframes
+2025-08-25 14:05:43,596 - INFO - 输出目录: mineru_output
+2025-08-25 14:05:43,596 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 14:05:43,597 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 14:05:43,597 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 14:05:43,597 - INFO - 处理 26 个关键帧图片
+2025-08-25 14:05:48,962 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 14:05:48,963 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 14:05:48,963 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 14:06:36,832 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 14:06:36,834 - INFO - 内容提取完成: 243行文档, 96张图片
+2025-08-25 14:06:36,837 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_origin.pdf
+2025-08-25 14:06:36,840 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_layout.pdf
+2025-08-25 14:06:36,843 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_spans.pdf
+2025-08-25 14:06:36,844 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_middle.json
+2025-08-25 14:06:36,845 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_model.json
+2025-08-25 14:06:36,846 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_content_list.json
+2025-08-25 14:06:36,849 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 14:06:36,849 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 14:12:26,789 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 14:12:26,789 - INFO - 关键帧目录: keyframes
+2025-08-25 14:12:26,789 - INFO - 输出目录: mineru_output
+2025-08-25 14:12:26,790 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 14:12:26,790 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 14:12:26,790 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 14:12:26,791 - INFO - 处理 26 个关键帧图片
+2025-08-25 14:12:32,383 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 14:12:32,383 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 14:12:32,383 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 14:13:21,163 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 14:13:21,167 - INFO - 内容提取完成: 243行文档, 48张图片
+2025-08-25 14:13:21,167 - INFO - 结构化JSON已保存: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466/1.5__35858e88-211d-4a44-aa48-5ea04074b466_structured.json
+2025-08-25 14:13:21,170 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_origin.pdf
+2025-08-25 14:13:21,173 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_layout.pdf
+2025-08-25 14:13:21,175 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_spans.pdf
+2025-08-25 14:13:21,176 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_middle.json
+2025-08-25 14:13:21,177 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_model.json
+2025-08-25 14:13:21,178 - INFO - 已删除冗余文件: mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp/1.5__35858e88-211d-4a44-aa48-5ea04074b466/auto/1.5__35858e88-211d-4a44-aa48-5ea04074b466_content_list.json
+2025-08-25 14:13:21,180 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 14:13:21,182 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 17:03:18,479 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 17:03:18,480 - INFO - 关键帧目录: keyframes
+2025-08-25 17:03:18,480 - INFO - 输出目录: mineru_output
+2025-08-25 17:03:18,481 - INFO - 发现视频文件夹: 4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f, 包含 81 个关键帧
+2025-08-25 17:03:18,481 - INFO - 开始处理视频: 4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f
+2025-08-25 17:03:18,482 - INFO - 开始创建PDF: mineru_output/pdfs/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f.pdf
+2025-08-25 17:03:18,482 - INFO - 处理 81 个关键帧图片
+2025-08-25 17:03:35,890 - INFO - PDF创建成功: mineru_output/pdfs/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f.pdf
+2025-08-25 17:03:35,890 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f.pdf
+2025-08-25 17:03:35,891 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f.pdf -o mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp -m auto
+2025-08-25 17:05:25,463 - INFO - MinerU处理成功: 4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f
+2025-08-25 17:05:25,472 - INFO - 内容提取完成: 639行文档, 49张图片
+2025-08-25 17:05:25,472 - INFO - 结构化JSON已保存: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_structured.json
+2025-08-25 17:05:25,482 - INFO - 已删除冗余文件: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_origin.pdf
+2025-08-25 17:05:25,493 - INFO - 已删除冗余文件: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_layout.pdf
+2025-08-25 17:05:25,502 - INFO - 已删除冗余文件: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_spans.pdf
+2025-08-25 17:05:25,504 - INFO - 已删除冗余文件: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_middle.json
+2025-08-25 17:05:25,505 - INFO - 已删除冗余文件: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_model.json
+2025-08-25 17:05:25,505 - INFO - 已删除冗余文件: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_content_list.json
+2025-08-25 17:05:25,507 - INFO - 视频 4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f 处理完成
+2025-08-25 17:05:25,508 - INFO - 所有视频处理完成，共处理 1 个视频

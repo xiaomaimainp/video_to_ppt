@@ -226,7 +226,7 @@ class MinerUKeyframeProcessor:
                 key_content = self.extract_key_content_only(video_name)
                 
                 # 清理临时文件，只保留关键JSON
-                self.cleanup_temp_files(temp_output_dir, video_name)
+                self.cleanup_redundant_files(temp_output_dir, video_name)
                 
                 return {
                     "video_name": video_name,
@@ -528,33 +528,199 @@ class MinerUKeyframeProcessor:
     def extract_key_content_only(self, session_id: str) -> Dict[str, Any]:
         """只提取关键内容，不生成冗余文件"""
         try:
-            # 获取关键帧目录
-            keyframes_dir = self.keyframes_dir / session_id
-            if not keyframes_dir.exists():
-                raise FileNotFoundError(f"关键帧目录不存在: {keyframes_dir}")
-
-            # 创建输出目录
-            output_dir = self.output_dir / "results" / session_id
-            output_dir.mkdir(parents=True, exist_ok=True)
-
-            # 生成PDF
+            # 检查PDF是否已存在
             pdf_path = self.output_dir / "pdfs" / f"{session_id}.pdf"
-            keyframes_dir = self.keyframes_dir / session_id
-            success = self.create_pdf_from_images(keyframes_dir, pdf_path)
-            if not success:
-                raise Exception(f"PDF创建失败: {pdf_path}")
+            if not pdf_path.exists():
+                raise FileNotFoundError(f"PDF文件不存在: {pdf_path}")
             
-            # 运行MinerU处理
-            result = self.process_pdf_with_mineru(pdf_path, session_id)
+            # 检查MinerU结果是否已存在
+            temp_output_dir = self.output_dir / "results" / f"{session_id}_temp"
+            result_dir = temp_output_dir / session_id / "auto"
             
-            # 立即清理冗余文件
-            self.cleanup_redundant_files(output_dir, session_id)
+            if not result_dir.exists():
+                raise FileNotFoundError(f"MinerU处理结果不存在: {result_dir}")
+            
+            # 创建最终输出目录
+            final_output_dir = self.output_dir / "results" / session_id
+            final_output_dir.mkdir(parents=True, exist_ok=True)
+            
+            # 提取关键内容
+            md_file = result_dir / f"{session_id}.md"
+            images_dir = result_dir / "images"
+            
+            if not md_file.exists():
+                raise FileNotFoundError(f"Markdown文件不存在: {md_file}")
+            
+            # 读取并处理Markdown内容
+            content = md_file.read_text(encoding='utf-8')
+            
+            # 统计信息
+            line_count = len(content.split('\n'))
+            image_count = len(list(images_dir.glob('*.jpg'))) if images_dir.exists() else 0
+            
+            # 生成结构化JSON
+            structured_json = self.parse_markdown_to_json(content, str(md_file), str(images_dir))
+            
+            # 保存结构化JSON
+            json_output_file = final_output_dir / f"{session_id}_structured.json"
+            with open(json_output_file, 'w', encoding='utf-8') as f:
+                json.dump(structured_json, f, ensure_ascii=False, indent=2)
+            
+            # 保存处理结果
+            result = {
+                "session_id": session_id,
+                "status": "success",
+                "content_file": str(md_file),
+                "images_dir": str(images_dir) if images_dir.exists() else None,
+                "structured_json_file": str(json_output_file),
+                "line_count": line_count,
+                "image_count": image_count,
+                "processed_at": datetime.now().isoformat()
+            }
+            
+            # 保存结果到JSON文件
+            result_file = final_output_dir / f"{session_id}_processing_result.json"
+            with open(result_file, 'w', encoding='utf-8') as f:
+                json.dump(result, f, ensure_ascii=False, indent=2)
+            
+            logger.info(f"内容提取完成: {line_count}行文档, {image_count}张图片")
+            logger.info(f"结构化JSON已保存: {json_output_file}")
             
             return result
             
         except Exception as e:
             logger.error(f"提取关键内容时出错: {e}")
             raise
+
+    def parse_markdown_to_json(self, content: str, md_file_path: str, images_dir: str) -> Dict[str, Any]:
+        """
+        将Markdown内容解析为结构化JSON
+        
+        Args:
+            content: Markdown内容
+            md_file_path: Markdown文件路径
+            images_dir: 图片目录路径
+            
+        Returns:
+            结构化的JSON数据
+        """
+        try:
+            slides = []
+            current_slide = None
+            
+            lines = content.split('\n')
+            
+            for line in lines:
+                line = line.strip()
+                
+                # 检测时间戳
+                timestamp_match = re.match(r':(\d{2}):(\d{2}):(\d{2})\.(\d{3})', line)
+                if timestamp_match:
+                    # 保存上一个幻灯片
+                    if current_slide:
+                        slides.append(current_slide)
+                    
+                    # 创建新幻灯片
+                    hours, minutes, seconds, milliseconds = timestamp_match.groups()
+                    timestamp = f"{hours}:{minutes}:{seconds}.{milliseconds}"
+                    
+                    current_slide = {
+                        "timestamp": timestamp,
+                        "timestamp_seconds": int(hours) * 3600 + int(minutes) * 60 + int(seconds) + int(milliseconds) / 1000,
+                        "title": "",
+                        "content": [],
+                        "images": [],
+                        "formulas": []
+                    }
+                    continue
+                
+                # 检测标题
+                if line.startswith('# ') and current_slide:
+                    current_slide["title"] = line[2:].strip()
+                    continue
+                
+                # 检测图片
+                image_match = re.match(r'!\[\]\(images/([^)]+)\)', line)
+                if image_match and current_slide:
+                    image_filename = image_match.group(1)
+                    current_slide["images"].append({
+                        "filename": image_filename,
+                        "path": f"images/{image_filename}",
+                        "full_path": f"{images_dir}/{image_filename}" if images_dir else f"images/{image_filename}"
+                    })
+                    continue
+                
+                # 检测数学公式
+                if line.startswith('$$') and current_slide:
+                    formula_lines = [line[2:]]  # 去掉开头的$$
+                    continue
+                elif line.endswith('$$') and current_slide:
+                    formula_lines.append(line[:-2])  # 去掉结尾的$$
+                    formula = '\n'.join(formula_lines).strip()
+                    if formula:
+                        current_slide["formulas"].append(formula)
+                    continue
+                
+                # 普通文本内容
+                if line and current_slide and not line.startswith(':'):
+                    current_slide["content"].append(line)
+            
+            # 添加最后一个幻灯片
+            if current_slide:
+                slides.append(current_slide)
+            
+            # 生成统计信息
+            total_slides = len(slides)
+            total_images = sum(len(slide["images"]) for slide in slides)
+            total_formulas = sum(len(slide["formulas"]) for slide in slides)
+            
+            # 提取主要主题
+            titles = [slide["title"] for slide in slides if slide["title"]]
+            main_topic = titles[0] if titles else "未知主题"
+            
+            return {
+                "metadata": {
+                    "source_file": md_file_path,
+                    "images_directory": images_dir,
+                    "processed_at": datetime.now().isoformat(),
+                    "total_slides": total_slides,
+                    "total_images": total_images,
+                    "total_formulas": total_formulas,
+                    "main_topic": main_topic,
+                    "duration_seconds": slides[-1]["timestamp_seconds"] if slides else 0
+                },
+                "slides": slides,
+                "summary": {
+                    "key_topics": list(set(titles)),
+                    "image_distribution": {
+                        f"slide_{i+1}": len(slide["images"]) 
+                        for i, slide in enumerate(slides)
+                    },
+                    "content_types": {
+                        "has_formulas": total_formulas > 0,
+                        "has_images": total_images > 0,
+                        "has_text": any(slide["content"] for slide in slides)
+                    },
+                    "timeline": [
+                        {
+                            "slide_number": i + 1,
+                            "timestamp": slide["timestamp"],
+                            "title": slide["title"] or f"幻灯片 {i + 1}",
+                            "image_count": len(slide["images"]),
+                            "content_length": len(' '.join(slide["content"]))
+                        }
+                        for i, slide in enumerate(slides)
+                    ]
+                }
+            }
+            
+        except Exception as e:
+            logger.error(f"解析Markdown为JSON时出错: {e}")
+            return {
+                "error": f"解析失败: {e}",
+                "source_file": md_file_path,
+                "processed_at": datetime.now().isoformat()
+            }
 
 
 def main():
