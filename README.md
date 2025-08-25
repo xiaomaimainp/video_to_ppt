@@ -3,9 +3,10 @@
 ## 功能步骤
 1. ✅ 视频关键帧提取  
 2. ✅ 视频ASR语音识别提取  
-3. ⬜ 本地大模型生成框架  
-4. ⬜ 生成PPT
-5. ⬜ PPT编辑     
+3. ✅ 结构化JSON数据生成
+4. ⬜ 本地大模型生成框架  
+5. ⬜ 生成PPT
+6. ⬜ PPT编辑     
 
 ## 部署指南
 
@@ -13,6 +14,7 @@
 - Python 3.8+
 - CUDA支持（用于Whisper语音识别，推荐但非必须）
 - 足够的磁盘空间用于存储视频和关键帧
+- MinerU工具（用于PDF处理和内容提取）
 
 ### 安装步骤
 
@@ -44,8 +46,8 @@
 
 4. **创建必要的目录**
    ```bash
-   mkdir -p uploads keyframes
-   chmod 777 uploads keyframes
+   mkdir -p uploads keyframes mineru_output
+   chmod 777 uploads keyframes mineru_output
    ```
 
 ### 启动服务
@@ -71,7 +73,7 @@ python server.py
    COPY . .
    
    # 创建必要的目录并设置权限
-   RUN mkdir -p uploads keyframes && chmod 777 uploads keyframes
+   RUN mkdir -p uploads keyframes mineru_output && chmod 777 uploads keyframes mineru_output
    
    # 下载Whisper模型
    RUN python -c "import whisper; whisper.load_model('base')"
@@ -85,7 +87,7 @@ python server.py
 2. **构建并运行Docker容器**
    ```bash
    docker build -t video-to-ppt .
-   docker run -p 9800:9800 -v $(pwd)/uploads:/app/uploads -v $(pwd)/keyframes:/app/keyframes video-to-ppt
+   docker run -p 9800:9800 -v $(pwd)/uploads:/app/uploads -v $(pwd)/keyframes:/app/keyframes -v $(pwd)/mineru_output:/app/mineru_output video-to-ppt
    ```
 
 ### 常见问题排查
@@ -108,6 +110,36 @@ python server.py
 - 上传文件大小限制：500MB（可在server.py中修改）
 - 支持的视频格式：MP4, AVI, MOV, MKV, WMV, FLV
 
+## 数据处理流程
+
+### 1. 关键帧提取
+系统使用OpenCV从视频中提取关键帧，保存为JPG格式。
+
+### 2. ASR语音识别
+使用Whisper模型从视频中提取语音内容，生成JSON格式的文本数据。
+
+### 3. 结构化数据生成
+系统提供两种结构化数据输出：
+
+#### 3.1 Markdown格式
+使用MinerU工具处理关键帧图片，生成包含时间戳、图片和文本的Markdown文件。
+
+#### 3.2 JSON格式
+系统会自动生成两种JSON文件：
+- **处理摘要JSON**：`mineru_output/processing_summary.json` - 包含处理状态和基本统计信息
+- **结构化JSON**：`mineru_output/{video_name}_structured.json` - 包含详细的幻灯片数据，每个幻灯片包含：
+  - 时间戳信息
+  - 关键帧图片路径
+  - 对应的ASR文本内容
+  - 自动提取的标题
+  - 统计信息（幻灯片数量、总时长等）
+
+### 4. 独立JSON生成工具
+如果需要单独生成结构化JSON，可以使用：
+```bash
+python generate_structured_json.py
+```
+这将基于现有的关键帧和ASR数据生成结构化JSON文件，无需重新处理视频。
 
 ## 贡献指南 
 
