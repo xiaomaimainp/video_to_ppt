@@ -1,0 +1,174 @@
+2025-08-25 11:14:47,444 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 11:14:47,444 - INFO - 关键帧目录: keyframes
+2025-08-25 11:14:47,444 - INFO - 输出目录: mineru_output
+2025-08-25 11:14:47,445 - INFO - 发现视频文件夹: 8.-_4b0a5e47-4956-4059-9a08-802ed77402d5, 包含 135 个关键帧
+2025-08-25 11:14:47,446 - INFO - 开始处理视频: 8.-_4b0a5e47-4956-4059-9a08-802ed77402d5
+2025-08-25 11:14:47,446 - INFO - 开始创建PDF: mineru_output/pdfs/8.-_4b0a5e47-4956-4059-9a08-802ed77402d5.pdf
+2025-08-25 11:14:47,446 - INFO - 处理 135 个关键帧图片
+2025-08-25 11:15:10,211 - INFO - PDF创建成功: mineru_output/pdfs/8.-_4b0a5e47-4956-4059-9a08-802ed77402d5.pdf
+2025-08-25 11:15:10,215 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/8.-_4b0a5e47-4956-4059-9a08-802ed77402d5.pdf
+2025-08-25 11:15:10,216 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/8.-_4b0a5e47-4956-4059-9a08-802ed77402d5.pdf -o mineru_output/results/8.-_4b0a5e47-4956-4059-9a08-802ed77402d5 -m auto
+2025-08-25 11:16:53,453 - INFO - MinerU处理成功: 8.-_4b0a5e47-4956-4059-9a08-802ed77402d5
+2025-08-25 11:16:53,457 - INFO - 找到生成的文件: ['other_json', 'middle_json', 'markdown', 'spans_pdf', 'content_json', 'layout_pdf', 'images']
+2025-08-25 11:16:53,666 - INFO - 视频 8.-_4b0a5e47-4956-4059-9a08-802ed77402d5 处理完成
+2025-08-25 11:16:53,853 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 11:27:01,856 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 11:27:01,856 - INFO - 关键帧目录: keyframes
+2025-08-25 11:27:01,856 - INFO - 输出目录: mineru_output
+2025-08-25 11:27:01,857 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 11:27:01,857 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:27:01,857 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:27:01,857 - INFO - 处理 26 个关键帧图片
+2025-08-25 11:27:07,336 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:27:07,337 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:27:07,337 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466 -m auto
+2025-08-25 11:27:54,593 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:27:54,596 - INFO - 找到生成的文件: ['other_json', 'spans_pdf', 'middle_json', 'content_json', 'layout_pdf', 'markdown', 'images']
+2025-08-25 11:27:54,672 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 11:27:54,743 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 11:44:56,843 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 11:44:56,843 - INFO - 关键帧目录: keyframes
+2025-08-25 11:44:56,843 - INFO - 输出目录: mineru_output
+2025-08-25 11:44:56,844 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 11:44:56,844 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:44:56,844 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:44:56,844 - INFO - 处理 26 个关键帧图片
+2025-08-25 11:45:02,275 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:45:02,275 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:45:02,276 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 11:45:49,999 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:45:50,000 - ERROR - MinerU处理PDF时出错: MinerUKeyframeProcessor.extract_key_content_only() takes 2 positional arguments but 3 were given
+2025-08-25 11:45:50,000 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 11:45:50,001 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 11:51:10,130 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 11:51:10,131 - INFO - 关键帧目录: keyframes
+2025-08-25 11:51:10,131 - INFO - 输出目录: mineru_output
+2025-08-25 11:51:10,131 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 11:51:10,132 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:51:10,132 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:51:10,132 - INFO - 处理 26 个关键帧图片
+2025-08-25 11:51:15,766 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:51:15,766 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:51:15,767 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 11:52:02,710 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:52:02,711 - ERROR - MinerU处理PDF时出错: 'MinerUKeyframeProcessor' object has no attribute 'logger'
+2025-08-25 11:52:02,712 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 11:52:02,712 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 11:54:00,485 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 11:54:00,485 - INFO - 关键帧目录: keyframes
+2025-08-25 11:54:00,485 - INFO - 输出目录: mineru_output
+2025-08-25 11:54:00,486 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 11:54:00,486 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:54:00,487 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:54:00,487 - INFO - 处理 26 个关键帧图片
+2025-08-25 11:54:06,221 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:54:06,222 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:54:06,222 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 11:54:53,150 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:54:53,150 - ERROR - 提取关键内容时出错: 'MinerUKeyframeProcessor' object has no attribute 'create_pdf_from_keyframes'
+2025-08-25 11:54:53,150 - ERROR - MinerU处理PDF时出错: 'MinerUKeyframeProcessor' object has no attribute 'create_pdf_from_keyframes'
+2025-08-25 11:54:53,151 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 11:54:53,151 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 11:55:59,035 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 11:55:59,035 - INFO - 关键帧目录: keyframes
+2025-08-25 11:55:59,035 - INFO - 输出目录: mineru_output
+2025-08-25 11:55:59,036 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 11:55:59,036 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:55:59,037 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:55:59,037 - INFO - 处理 26 个关键帧图片
+2025-08-25 11:56:04,511 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:56:04,511 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 11:56:04,512 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 11:56:52,182 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 11:56:52,182 - ERROR - 提取关键内容时出错: 'MinerUKeyframeProcessor' object has no attribute 'create_pdf'
+2025-08-25 11:56:52,183 - ERROR - MinerU处理PDF时出错: 'MinerUKeyframeProcessor' object has no attribute 'create_pdf'
+2025-08-25 11:56:52,183 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 11:56:52,183 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 13:04:08,000 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 13:04:08,000 - INFO - 关键帧目录: keyframes
+2025-08-25 13:04:08,000 - INFO - 输出目录: mineru_output
+2025-08-25 13:04:08,001 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 13:04:08,001 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:04:08,001 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:04:08,001 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:04:12,903 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:04:12,903 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:04:12,904 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:04:39,185 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:04:39,185 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:04:39,186 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:04:44,212 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:04:44,213 - ERROR - 提取关键内容时出错: 'MinerUKeyframeProcessor' object has no attribute 'run_mineru_processing'
+2025-08-25 13:04:44,213 - ERROR - MinerU处理PDF时出错: 'MinerUKeyframeProcessor' object has no attribute 'run_mineru_processing'
+2025-08-25 13:04:44,243 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 13:04:44,243 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 13:37:49,109 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 13:37:49,109 - INFO - 关键帧目录: keyframes
+2025-08-25 13:37:49,109 - INFO - 输出目录: mineru_output
+2025-08-25 13:37:49,110 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 13:37:49,110 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:37:49,111 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:37:49,111 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:37:54,703 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:37:54,704 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:37:54,704 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:38:41,816 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:38:41,817 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:38:41,817 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:38:47,019 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:38:47,021 - ERROR - 提取关键内容时出错: 'MinerUKeyframeProcessor' object has no attribute 'run_mineru_processing'
+2025-08-25 13:38:47,021 - ERROR - MinerU处理PDF时出错: 'MinerUKeyframeProcessor' object has no attribute 'run_mineru_processing'
+2025-08-25 13:38:47,021 - INFO - 视频 1.5__35858e88-211d-4a44-aa48-5ea04074b466 处理完成
+2025-08-25 13:38:47,022 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-08-25 13:41:43,483 - INFO - 初始化MinerU关键帧处理器
+2025-08-25 13:41:43,483 - INFO - 关键帧目录: keyframes
+2025-08-25 13:41:43,483 - INFO - 输出目录: mineru_output
+2025-08-25 13:41:43,484 - INFO - 发现视频文件夹: 1.5__35858e88-211d-4a44-aa48-5ea04074b466, 包含 26 个关键帧
+2025-08-25 13:41:43,484 - INFO - 开始处理视频: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:41:43,484 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:41:43,484 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:41:49,230 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:41:49,230 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:41:49,230 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:42:37,752 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:42:37,753 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:42:37,753 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:42:43,311 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:42:43,313 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:42:43,314 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:43:32,411 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:43:32,412 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:43:32,412 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:43:37,936 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:43:37,936 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:43:37,936 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:44:26,115 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:44:26,116 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:44:26,116 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:44:31,748 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:44:31,750 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:44:31,750 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:45:21,476 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:45:21,477 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:45:21,477 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:45:27,119 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:45:27,121 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:45:27,121 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:46:14,542 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:46:14,543 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:46:14,543 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:46:20,339 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:46:20,341 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:46:20,341 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:47:07,333 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:47:07,334 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:47:07,334 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:47:13,066 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:47:13,068 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:47:13,068 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto
+2025-08-25 13:48:01,602 - INFO - MinerU处理成功: 1.5__35858e88-211d-4a44-aa48-5ea04074b466
+2025-08-25 13:48:01,602 - INFO - 开始创建PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:48:01,602 - INFO - 处理 26 个关键帧图片
+2025-08-25 13:48:07,077 - INFO - PDF创建成功: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:48:07,079 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf
+2025-08-25 13:48:07,080 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/1.5__35858e88-211d-4a44-aa48-5ea04074b466.pdf -o mineru_output/results/1.5__35858e88-211d-4a44-aa48-5ea04074b466_temp -m auto

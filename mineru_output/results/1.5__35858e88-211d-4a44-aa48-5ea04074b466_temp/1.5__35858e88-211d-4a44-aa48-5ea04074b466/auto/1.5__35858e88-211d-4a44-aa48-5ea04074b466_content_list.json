@@ -1,0 +1,716 @@
+[
+    {
+        "type": "text",
+        "text": ":00:00:00.000 ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Regularizing your neural network ",
+        "text_level": 1,
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/d46f088142519c6435875911696a6048a491d1691644187a025e3b5dc4edd566.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Why regularization reduces overfitting ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": ":00:00:03.000 ",
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/f331121b65a16b5dd429eeb973f5e5f99c733d4a02adc69a318dbb9bb40306c8.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": ":00:00:06.000 ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Regularizing your neural network ",
+        "text_level": 1,
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/f4d06c4506473bb0e6d51740964cfd0fe38cb318b719264feb4dcafd9c173dcc.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Why regularization reduces overfitting ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": ":00:00:10.000",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/49f507cb945f39645014f1dbc7b403d8f542248f37abacc572330dd4d53ee055.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/0c79d90e3aa9d67cef77a575c7c0e167c37d52a1b4f5c2f0a3c6c409931a51bd.jpg",
+        "img_caption": [
+            "high bias "
+        ],
+        "img_footnote": [],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/797bd52b29935d7b6d5418f0bf31e5d2e6bdf55f75a05b5bd3fcb88c476e7988.jpg",
+        "img_caption": [
+            "\"just right\" "
+        ],
+        "img_footnote": [],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/71523ed500c4bc55a0b188c60e3bc555d77908e9697fae071fff0868895f1489.jpg",
+        "img_caption": [
+            "high variance "
+        ],
+        "img_footnote": [],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": ":00:00:20.000 ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/8bed122194653b356d5c58489d6529e9a504cafa7596aa7f9511e6ec3e62af33.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/92a62523860f67ef98e9479447d175928771f325fb40a1303738bccc623f17a1.jpg",
+        "img_caption": [
+            "high bias "
+        ],
+        "img_footnote": [],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/6b5f9618102f1a3ea0b5735ee593cabe761536b7e1a56cca6f435ac77e9df86b.jpg",
+        "img_caption": [
+            "\"just right\" "
+        ],
+        "img_footnote": [],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/50a15be301c62a665f4f0af9fba5d8b6772b9704f24f7b577cc78e0a324dd89c.jpg",
+        "img_caption": [
+            "high variance "
+        ],
+        "img_footnote": [],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": ":00:00:40.000 ",
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/8c8eb4c8976ff5bf8b790d615669d01037d61ad6191f26c5c4039734fc8b1b73.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "(w\", ",
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/fd7b8366e7d89b0d2c47fa16799aeb0286781d217174b3ec7d50facd7c24cd82.jpg",
+        "img_caption": [
+            "high bias "
+        ],
+        "img_footnote": [],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/66eeee0e6b6ee5ebbe5f530de6a8942488fe5546d4987ffeaf300298ec727efd.jpg",
+        "img_caption": [
+            "“just right\" "
+        ],
+        "img_footnote": [],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/4ae5cc42cb189b51680767c4dc5b3492148aac17b7fa82dcf4805a4d27995eff.jpg",
+        "img_caption": [
+            "high variance "
+        ],
+        "img_footnote": [],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": ":00:01:00.000 ",
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/6c44a9e2bbed3c8bf791219f220967b6ec95bcc00844e18c65822b24d0945de5.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n7(4^{(4)},b^{(4)})=\\frac{1}{2}\\sum\\limits_{i=1}^{n}((4^{(4)},b^{(4)})+\\frac{1}{2m}\\sum\\limits_{k=1}^{2}114)^{n+1}\n$$",
+        "text_format": "latex",
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/a803fc492df4dbb2d7da308c3ddb0768be2bcc3369943e7a601f1df9e63c09c8.jpg",
+        "img_caption": [
+            "high bias "
+        ],
+        "img_footnote": [],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/9d5f6ea521a60c47d10c9a15285b455b07ab29a7541b0c30e0c4ed0b2b7c75a6.jpg",
+        "img_caption": [
+            "“just right\" "
+        ],
+        "img_footnote": [],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/5a88eb69b0d058d413a319b561053fdb23d58eeb9ac3f5f478d8579556f2355c.jpg",
+        "img_caption": [
+            "high variance "
+        ],
+        "img_footnote": [],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": ":00:01:20.000 ",
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/38f81ab0f6d9528d95f84abae76436638c5465a34b4f0ed7642f8fa506cfe187.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/d694b19cac03deea9cfb5d07d75926bf0753f39fc36d4d661d5e0eedefdb2adf.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/6de98035c73a556ce4bc1d99109812d50c257d13850ac522134d6c399d123004.jpg",
+        "img_caption": [
+            "high bias "
+        ],
+        "img_footnote": [],
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/7f2f401d091885e8351ce88207407bf265bf8d344e3dc9098aff9b95690b8984.jpg",
+        "img_caption": [
+            "\"just right\" "
+        ],
+        "img_footnote": [],
+        "page_idx": 7
+    },
+    {
+        "type": "image",
+        "img_path": "images/66b00b7edb89602fc93b4e2cf9054d3f41d9e64012dc429972933f27b3b8e649.jpg",
+        "img_caption": [
+            "high variance "
+        ],
+        "img_footnote": [],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": ":00:01:40.000 ",
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/783c7b8f32be3b467198df8fba6d6b4f230151a2577f950d6f6332d276d6b128.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/0b5b600b86f2299c7426e1db7424e7d46031f68aeffa1e599eec4afb8f7f5857.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/b56fed48852459dbedc6249ee8d79eb1f2e20a2fc8b52e6de6dc76f4bea43af4.jpg",
+        "img_caption": [
+            "high bias "
+        ],
+        "img_footnote": [],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/328a251bd142784618f69d270ad834a8b867927a8e906be13cc34f471de7fb62.jpg",
+        "img_caption": [
+            "\"just right\" "
+        ],
+        "img_footnote": [],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/29ed6da01e5058a4c603726208b159d9d42d85c60c1c401702691e6264ea7a71.jpg",
+        "img_caption": [
+            "high variance "
+        ],
+        "img_footnote": [],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": ":00:02:00.000 ",
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 9
+    },
+    {
+        "type": "image",
+        "img_path": "images/f3f45caea449a100633f36b79f8a0c9abd537bc5321e95f78e79d22cc9f71244.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": ":00:02:20.000 ",
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/457063749cc6552c560a86a18a23fe8a24150020ef3764cc71c9702890c1d72a.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": ":00:02:40.000 ",
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/586566dd12cb6a4f03c0bbda9f017fab0c93bae94f99877af976459806775a6a.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": ":00:03:00.000 ",
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/0a227b35a3da7c7e48989decd47a84d7a4473e20e48fbcb0696e84f404c4ad2a.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": ":00:03:20.000 ",
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 13
+    },
+    {
+        "type": "image",
+        "img_path": "images/f5ace2617e10c63e16b04aa4c81a5d59c2b90c41a3b9935c72eb5ec9d1d6cbd2.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": ":00:03:40.000 ",
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 14
+    },
+    {
+        "type": "image",
+        "img_path": "images/af6053fa1880d4c1e15a34358266b66732e0ce37e7b6732b737a65bbd8e74602.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": ":00:04:00.000 ",
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/e7db6b68e5f54249385798ad1e56540b3a4deaa2643ca5215edf3259077be6f5.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": ":00:04:20.000 ",
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/d823f03f903b647a7e9f8bd252dcd103b977713360646261f2456f022e2c4eb7.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": ":00:04:40.000 ",
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/f09bf21f8eba307c6eebb1286445cab393b95f678c5515dde1ddde47351d19c7.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": ":00:05:00.000 ",
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/baf153810eadbefc597cd66500e1ce982e6652ae8c7a9f7f96996ee6ceba6e59.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": ":00:05:20.000 ",
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 19
+    },
+    {
+        "type": "image",
+        "img_path": "images/fa8f9f385291000e1a5faeeb09d7b5db88e8953471e035457376acf7485bcb73.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": ":00:05:40.000 ",
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/144b5d89c21513ff3d941cec0fd7315fcf344f4b637adef2c14244259b3ea2f8.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": ":00:06:00.000 ",
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "page_idx": 21
+    },
+    {
+        "type": "image",
+        "img_path": "images/1266b1c9886a99ab47018491f87d43f834c727274f70d2e374bb72179a16e252.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": ":00:06:20.000 ",
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 22
+    },
+    {
+        "type": "image",
+        "img_path": "images/cc32fae0b8565abe850a9855338edaeb1028e44251ff3b571b4c10da94cb07ef.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": ":00:06:40.000 ",
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "How does regularization prevent overfitting? ",
+        "text_level": 1,
+        "page_idx": 23
+    },
+    {
+        "type": "image",
+        "img_path": "images/0af46dc3b5875738c7296e15fece986112ffc7f478992baa78532d937b6007ea.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": ":00:06:54.000 ",
+        "page_idx": 24
+    },
+    {
+        "type": "image",
+        "img_path": "images/81e0c6b26736fcd51d3f50aa389ea1db80779bd66861b8d770331030ea54f520.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "",
+        "page_idx": 24
+    },
+    {
+        "type": "image",
+        "img_path": "images/8e8d5316b41b1c1489e47286df6aae7306eab2f1777a79cc38632d04920a50ae.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": ":00:07:00.000 ",
+        "page_idx": 25
+    },
+    {
+        "type": "image",
+        "img_path": "images/a77fcdddc85e34dc01b94faf29f3a2e4c7a56f27747f664e9e6c887bc03b204d.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "",
+        "page_idx": 25
+    },
+    {
+        "type": "image",
+        "img_path": "images/f16162da2bdb9c0faad0d136a1b4114c87d083faee9186e297b66d9c0e329db1.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "Andrew Ng ",
+        "page_idx": 25
+    }
+]

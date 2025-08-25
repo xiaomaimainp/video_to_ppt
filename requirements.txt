@@ -1,2 +1,113 @@
-opencv-python>=4.5.0
-numpy>=1.21.0
+# 基础Web框架
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# 视频处理
+opencv-python==4.8.1.78
+moviepy==1.0.3
+
+# 图像处理
+Pillow==10.0.1
+numpy==1.24.3
+
+# PDF处理
+reportlab==4.0.4
+PyPDF2==3.0.1
+
+# OCR和文档处理
+pytesseract==0.3.10
+
+# MinerU依赖包
+boto3>=1.28.43
+Brotli>=1.1.0
+click>=8.1.7
+fast-langdetect>=0.2.3,<0.3.0
+loguru>=0.6.0
+pydantic>=2.7.2,<2.11
+PyMuPDF>=1.24.9,<1.25.0
+scikit-learn>=1.0.2
+torch>=2.2.2,!=2.5.0,!=2.5.1
+torchvision
+transformers>=4.49.0,!=4.51.0,<5.0.0
+pdfminer.six==20231228
+tqdm>=4.67.1
+beautifulsoup4>=4.9.0
+requests>=2.31.0
+
+# YOLO和深度学习相关
+ultralytics>=8.0.0
+doclayout-yolo
+detectron2
+
+# 其他工具
+easyocr
+paddlepaddle
+paddleocr
+
+# 语言检测
+langdetect
+
+# 数据处理
+pandas
+matplotlib
+seaborn
+
+# 开发工具
+pytest
+black
+flake8Werkzeug==2.3.7
+
+# 视频处理
+opencv-python==4.8.1.78
+moviepy==1.0.3
+
+# 图像处理
+Pillow==10.0.1
+numpy==1.24.3
+
+# PDF处理
+reportlab==4.0.4
+PyPDF2==3.0.1
+
+# OCR和文档处理
+pytesseract==0.3.10
+
+# MinerU依赖包
+boto3>=1.28.43
+Brotli>=1.1.0
+click>=8.1.7
+fast-langdetect>=0.2.3,<0.3.0
+loguru>=0.6.0
+pydantic>=2.7.2,<2.11
+PyMuPDF>=1.24.9,<1.25.0
+scikit-learn>=1.0.2
+torch>=2.2.2,!=2.5.0,!=2.5.1
+torchvision
+transformers>=4.49.0,!=4.51.0,<5.0.0
+pdfminer.six==20231228
+tqdm>=4.67.1
+beautifulsoup4>=4.9.0
+requests>=2.31.0
+
+# YOLO和深度学习相关
+ultralytics>=8.0.0
+doclayout-yolo
+detectron2
+
+# 其他工具
+easyocr
+paddlepaddle
+paddleocr
+
+# 语言检测
+langdetect
+
+# 数据处理
+pandas
+matplotlib
+seaborn
+
+# 开发工具
+pytest
+black
+flake8
