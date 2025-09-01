@@ -485,28 +485,46 @@ def list_keyframes(filename):
 
 @app.route('/clear_mineru_output', methods=['POST'])
 def clear_mineru_output():
-    """清空mineru_output目录下的所有文件"""
-    mineru_output_dir = '/home/huangshiang/video_to_ppt/mineru_output'
+    """清空keyframes、uploads、mineru_output目录和course_outline.md文件"""
+    base_dir = '/home/huangshiang/video_to_ppt'
+    directories_to_clear = ['keyframes', 'uploads', 'mineru_output']
+    files_to_delete = ['course_outline.md']
     
     try:
-        if not os.path.exists(mineru_output_dir):
-            return jsonify({
-                'success': True,
-                'message': 'mineru_output目录不存在，无需清空'
-            })
+        cleared_items = []
         
-        # 删除mineru_output目录下的所有内容
-        for item in os.listdir(mineru_output_dir):
-            item_path = os.path.join(mineru_output_dir, item)
+        # 清空目录
+        for dir_name in directories_to_clear:
+            dir_path = os.path.join(base_dir, dir_name)
             
-            if os.path.isfile(item_path):
-                os.remove(item_path)
-            elif os.path.isdir(item_path):
-                shutil.rmtree(item_path)
+            if os.path.exists(dir_path):
+                # 删除目录下的所有内容
+                for item in os.listdir(dir_path):
+                    item_path = os.path.join(dir_path, item)
+                    
+                    if os.path.isfile(item_path):
+                        os.remove(item_path)
+                    elif os.path.isdir(item_path):
+                        shutil.rmtree(item_path)
+                
+                cleared_items.append(f"{dir_name}目录")
+        
+        # 删除指定文件
+        for file_name in files_to_delete:
+            file_path = os.path.join(base_dir, file_name)
+            
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                cleared_items.append(f"{file_name}文件")
+        
+        if cleared_items:
+            message = f'成功清空: {", ".join(cleared_items)}'
+        else:
+            message = '所有目录和文件都不存在或已为空'
         
         return jsonify({
             'success': True,
-            'message': '成功清空mineru_output目录下的所有文件'
+            'message': message
         })
         
     except Exception as e:

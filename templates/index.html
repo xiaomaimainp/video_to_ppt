@@ -1049,9 +1049,9 @@
                 document.body.removeChild(a);
             }
             
-            // 清空mineru_output数据
+            // 清空所有数据
             function clearAllData() {
-                if (!confirm('确定要清空mineru_output目录下的所有文件吗？此操作不可恢复！')) {
+                if (!confirm('确定要清空以下内容吗？\n- keyframes (关键帧目录)\n- uploads (上传文件目录)\n- mineru_output (处理结果目录)\n- course_outline.md (课程大纲文件)\n\n此操作不可恢复！')) {
                     return;
                 }
                 

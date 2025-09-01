@@ -292,3 +292,54 @@
 2025-08-25 17:05:25,505 - INFO - 已删除冗余文件: mineru_output/results/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_temp/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f/auto/4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_content_list.json
 2025-08-25 17:05:25,507 - INFO - 视频 4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f 处理完成
 2025-08-25 17:05:25,508 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-09-01 16:51:46,684 - INFO - 初始化MinerU关键帧处理器
+2025-09-01 16:51:46,684 - INFO - 关键帧目录: /home/huangshiang/video_to_ppt/keyframes
+2025-09-01 16:51:46,684 - INFO - 输出目录: mineru_output
+2025-09-01 16:51:46,685 - INFO - 发现视频文件夹: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76, 包含 17 个关键帧
+2025-09-01 16:51:46,685 - INFO - 开始处理视频: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76
+2025-09-01 16:51:46,686 - INFO - 开始创建PDF: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:51:46,686 - INFO - 处理 17 个关键帧图片
+2025-09-01 16:51:50,670 - INFO - PDF创建成功: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:51:50,672 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:51:50,672 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf -o mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp -m auto
+2025-09-01 16:51:56,619 - INFO - MinerU处理成功: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76
+2025-09-01 16:51:56,619 - ERROR - 提取关键内容时出错: MinerU处理结果不存在: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto
+2025-09-01 16:51:56,620 - ERROR - MinerU处理PDF时出错: MinerU处理结果不存在: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto
+2025-09-01 16:51:56,620 - INFO - 视频 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76 处理完成
+2025-09-01 16:51:56,621 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-09-01 16:52:28,618 - INFO - 初始化MinerU关键帧处理器
+2025-09-01 16:52:28,618 - INFO - 关键帧目录: keyframes
+2025-09-01 16:52:28,619 - INFO - 输出目录: mineru_output
+2025-09-01 16:52:28,619 - INFO - 发现视频文件夹: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76, 包含 17 个关键帧
+2025-09-01 16:52:28,619 - INFO - 开始处理视频: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76
+2025-09-01 16:52:28,620 - INFO - 开始创建PDF: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:52:28,620 - INFO - 处理 17 个关键帧图片
+2025-09-01 16:52:32,570 - INFO - PDF创建成功: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:52:32,572 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:52:32,572 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf -o mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp -m auto
+2025-09-01 16:52:38,327 - INFO - MinerU处理成功: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76
+2025-09-01 16:52:38,328 - ERROR - 提取关键内容时出错: MinerU处理结果不存在: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto
+2025-09-01 16:52:38,328 - ERROR - MinerU处理PDF时出错: MinerU处理结果不存在: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto
+2025-09-01 16:52:38,328 - INFO - 视频 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76 处理完成
+2025-09-01 16:52:38,329 - INFO - 所有视频处理完成，共处理 1 个视频
+2025-09-01 16:55:54,649 - INFO - 初始化MinerU关键帧处理器
+2025-09-01 16:55:54,649 - INFO - 关键帧目录: /home/huangshiang/video_to_ppt/keyframes
+2025-09-01 16:55:54,649 - INFO - 输出目录: mineru_output
+2025-09-01 16:55:54,650 - INFO - 发现视频文件夹: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76, 包含 17 个关键帧
+2025-09-01 16:55:54,650 - INFO - 开始处理视频: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76
+2025-09-01 16:55:54,650 - INFO - 开始创建PDF: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:55:54,651 - INFO - 处理 17 个关键帧图片
+2025-09-01 16:55:59,457 - INFO - PDF创建成功: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:55:59,459 - INFO - 开始使用MinerU处理PDF: mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf
+2025-09-01 16:55:59,459 - INFO - 执行命令: magic-pdf -p mineru_output/pdfs/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76.pdf -o mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp -m auto
+2025-09-01 16:56:55,461 - INFO - MinerU处理成功: 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76
+2025-09-01 16:56:55,464 - INFO - 内容提取完成: 123行文档, 11张图片
+2025-09-01 16:56:55,465 - INFO - 结构化JSON已保存: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_structured.json
+2025-09-01 16:56:55,467 - INFO - 已删除冗余文件: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_origin.pdf
+2025-09-01 16:56:55,470 - INFO - 已删除冗余文件: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_layout.pdf
+2025-09-01 16:56:55,473 - INFO - 已删除冗余文件: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_spans.pdf
+2025-09-01 16:56:55,474 - INFO - 已删除冗余文件: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_middle.json
+2025-09-01 16:56:55,474 - INFO - 已删除冗余文件: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_model.json
+2025-09-01 16:56:55,475 - INFO - 已删除冗余文件: mineru_output/results/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_temp/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76/auto/4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76_content_list.json
+2025-09-01 16:56:55,477 - INFO - 视频 4.6.1---_aac48095-02b2-4e4c-8e0d-3d71907b0b76 处理完成
+2025-09-01 16:56:55,477 - INFO - 所有视频处理完成，共处理 1 个视频

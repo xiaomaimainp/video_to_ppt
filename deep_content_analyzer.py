@@ -30,11 +30,35 @@ class CleanCourseGenerator:
         print("✗ ollama不可用")
         return False
     
+    def find_latest_asr_file(self) -> Path:
+        """查找最新的ASR文件"""
+        keyframes_dir = self.project_dir / "keyframes"
+        
+        if not keyframes_dir.exists():
+            raise FileNotFoundError("keyframes目录不存在")
+        
+        # 查找所有包含ASR文件的目录
+        asr_files = []
+        for video_dir in keyframes_dir.iterdir():
+            if video_dir.is_dir():
+                # 查找该目录下的ASR文件
+                for file in video_dir.iterdir():
+                    if file.name.endswith('_asr.json'):
+                        asr_files.append(file)
+        
+        if not asr_files:
+            raise FileNotFoundError("未找到任何ASR文件")
+        
+        # 返回最新修改的ASR文件
+        latest_file = max(asr_files, key=lambda f: f.stat().st_mtime)
+        print(f"✓ 找到ASR文件: {latest_file}")
+        return latest_file
+    
     def load_asr_content(self) -> str:
         """加载ASR语音识别内容"""
-        asr_file = self.project_dir / "keyframes" / "4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f" / "4.2.1---I_a9ee63e6-47e4-4aa2-b982-36d672defb6f_asr.json"
-        
         try:
+            asr_file = self.find_latest_asr_file()
+            
             with open(asr_file, 'r', encoding='utf-8') as f:
                 asr_data = json.load(f)
             

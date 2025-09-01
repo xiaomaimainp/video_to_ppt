@@ -7,6 +7,38 @@
 import sys
 import os
 from pathlib import Path
+import subprocess
+
+def activate_conda_and_run():
+    """检查并激活conda环境，然后重新运行脚本"""
+    # 检查是否在mineru1.3.2环境中
+    conda_env = os.environ.get('CONDA_DEFAULT_ENV', '')
+    if conda_env != 'mineru1.3.2':
+        # 尝试激活conda环境并重新运行
+        try:
+            # 获取conda初始化命令
+            conda_init = subprocess.check_output(['conda', 'shell.bash', 'hook'], 
+                                               stderr=subprocess.DEVNULL, 
+                                               universal_newlines=True)
+            
+            # 构造完整的命令来激活环境并运行脚本
+            cmd = f"""
+            {conda_init}
+            conda activate mineru1.3.2
+            python {" ".join(sys.argv)}
+            """
+            
+            # 在bash中执行命令
+            result = subprocess.run(['bash', '-c', cmd], 
+                                  cwd=os.path.dirname(os.path.abspath(__file__)))
+            return result.returncode
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            print("警告: 无法自动激活conda环境'mineru1.3.2'")
+            print("请手动激活环境后运行: conda activate mineru1.3.2 && python run_mineru_processor.py")
+            return 1
+    else:
+        # 已在正确的环境中，继续执行主逻辑
+        return None
 
 # 添加当前目录到Python路径
 current_dir = Path(__file__).parent
@@ -79,4 +111,10 @@ def main():
         traceback.print_exc()
 
 if __name__ == "__main__":
+    # 检查是否需要激活conda环境
+    result = activate_conda_and_run()
+    if result is not None:
+        sys.exit(result)
+    
+    # 如果不需要重新运行或已在正确环境中，则执行主函数
     main()
