@@ -1049,31 +1049,22 @@
                 document.body.removeChild(a);
             }
             
-            // 清空所有数据
+            // 清空mineru_output数据
             function clearAllData() {
-                if (!confirm('确定要清空所有视频和关键帧数据吗？此操作不可恢复。')) {
+                if (!confirm('确定要清空mineru_output目录下的所有文件吗？此操作不可恢复！')) {
                     return;
                 }
                 
-                fetch('/clear_all', {
+                fetch('/clear_mineru_output', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({})
+                    }
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
                         showMessage(data.message, 'success');
-                        
-                        // 清空当前显示
-                        keyframesContainer.style.display = 'none';
-                        currentFileName = null;
-                        fileInfo.innerHTML = '';
-                        
-                        // 重新加载视频列表
-                        loadVideoList();
                     } else {
                         throw new Error(data.error || '清空失败');
                     }

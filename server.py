@@ -7,6 +7,7 @@
 import os
 import uuid
 import json
+import shutil
 from flask import Flask, request, render_template, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 from extractor import VideoKeyframeExtractor
@@ -481,6 +482,35 @@ def list_keyframes(filename):
         'video_duration': video_duration,
         'video_duration_formatted': duration_formatted
     })
+
+@app.route('/clear_mineru_output', methods=['POST'])
+def clear_mineru_output():
+    """清空mineru_output目录下的所有文件"""
+    mineru_output_dir = '/home/huangshiang/video_to_ppt/mineru_output'
+    
+    try:
+        if not os.path.exists(mineru_output_dir):
+            return jsonify({
+                'success': True,
+                'message': 'mineru_output目录不存在，无需清空'
+            })
+        
+        # 删除mineru_output目录下的所有内容
+        for item in os.listdir(mineru_output_dir):
+            item_path = os.path.join(mineru_output_dir, item)
+            
+            if os.path.isfile(item_path):
+                os.remove(item_path)
+            elif os.path.isdir(item_path):
+                shutil.rmtree(item_path)
+        
+        return jsonify({
+            'success': True,
+            'message': '成功清空mineru_output目录下的所有文件'
+        })
+        
+    except Exception as e:
+        return jsonify({'error': f'清空失败: {str(e)}'}), 500
 
 if __name__ == '__main__':
     print(f"启动视频关键帧提取服务器，端口: 9800")
